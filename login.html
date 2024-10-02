@@ -1,0 +1,63 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<section class="container forms">
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+                <h1 id="itune">AXTON</h1>
+                <span>
+                    <p>Axton-Your Ultimate Travel Planner “ is done to embark the unforgettable journeys and discover the World with our immersive website, which is designed to ignite the spirit of exploration in every traveler. Our travel website offers curated itineraries and destinations around the globe , providing the best guides and recommending not to miss on the savor local cuisines from street food stalls to fine dining establishments , and making your travel experience seamless by using our translating feature, ensuring the users to navigate effortlessly and access information with ease.</p>
+                    <p>Sign-up with social media</p>
+                    <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-google" aria-hidden="true"></i> </a>
+                </span>
+            </div>
+        </div>
+        <div class="right">
+            <h5>SignUp</h5>
+            <p>Already have an account? <a href="log.html">Login</a></p>
+            <div class="inputs">
+                <form action="POST" name="google-sheet">
+                <input id="name" name="Name" type="text" placeholder="Full Name" required="">
+                <br>
+                <input type="text" name="Email" placeholder="Email" required="">
+                <br>
+                <input type="text" name="Username" placeholder="Username" required="">
+                <br>
+                <input type="password" name="Password" placeholder="Password" required="">
+            </form></div>
+            <br>
+            <input id="submit" type="submit" value="Sign up" name="submit">
+        </div>
+    </div>
+</section>
+
+
+ 
+<script>
+   
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyzVoIv7Q1vXyKqbMZfr5OvoKEiBMCZwvue5dPuGbjtTt0N9LBq5vG1J9watWRNjU7AOw/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      let name = document.getElementById("name").value
+    //   let itune = document.getElementById("itune")
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert(`Welcome , ${name} ; Account Successfully Created ; Redirecting to Login page :))`))
+        .then(response=>setTimeout(()=>{
+            document.location.href='index.html'
+
+        } ,1000))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
